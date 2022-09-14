@@ -1,0 +1,18 @@
+<mat-toolbar fxLayout="row" color="primary">
+    <span fxFlex>Uaaloo challenge</span>
+    <button mat-button *ngFor="let item of menuItems" (click)="redirectTo(item.route)" fxHide.xs>
+        {{item.label}}
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #dropMenu="matMenu">
+        <ng-container *ngFor="let item of menuItems">
+            <button mat-menu-item (click)="redirectTo(item.route)">
+                <mat-icon class="mr">{{item.icon}}</mat-icon>
+                {{item.label}}
+            </button>
+            <mat-divider></mat-divider>
+        </ng-container>
+    </mat-menu>
+</mat-toolbar>

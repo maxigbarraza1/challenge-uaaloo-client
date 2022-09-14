@@ -1,0 +1,40 @@
+<div>
+    <mat-toolbar class="toolbar text-center">
+        <ng-container *ngIf="data; else noData">
+            <h3>Modificar cliente</h3>
+        </ng-container>
+        <ng-template #noData>
+            <h3>Nuevos clientes</h3>
+        </ng-template>
+    </mat-toolbar>
+    <form fxLayoutAlign="stretch" 
+            fxLayout="column"
+            class="clients-form"
+            (ngSubmit)="submit()"
+            [formGroup]="clientForm">
+        <mat-form-field>
+            <input matInput placeholder="Nombre" formControlName="nombre">
+            <mat-error *ngIf="validateField('nombre')">
+                {{getErrorMessage('nombre')}}.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Apellido" formControlName="apellido">
+            <mat-error *ngIf="validateField('apellido')">
+                {{getErrorMessage('apellido')}}.
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Direccion" formControlName="direccion">
+            <mat-error *ngIf="validateField('direccion')">
+                {{getErrorMessage('direccion')}}.
+            </mat-error>
+        </mat-form-field>
+        
+        <button mat-raised-button 
+                color="primary"
+                type="submit">
+                Cargar
+        </button>
+    </form>
+</div>
